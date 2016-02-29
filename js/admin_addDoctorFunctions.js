@@ -264,9 +264,11 @@ $(document).ready(function(){
 		var temp = document.getElementById('doc_hospital');
 
 		var hospital = temp.options[temp.selectedIndex].text;
+		var hospital_value = document.getElementById('doc_hospital').value;
 		var room = document.getElementById('doc_room').value;
 		var contact_num = document.getElementById('doc_contact_num').value;
 
+		var hospital_id_id = "doc_id_id" + hospital_content_num;
 		var hospital_id = "doc_hospital" + hospital_content_num;
 		var room_id = "room_id" + hospital_content_num;
 		var contact_num_id = "contact_num" + hospital_content_num;
@@ -278,6 +280,7 @@ $(document).ready(function(){
 		
 
 		var hospital_content = "<div id='"+div_id+"'>"
+							+ 	"<input type='text' id='"+hospital_id_id+"'name='doc_hospital_id_id[]' style='display:none;' readonly>"
 							+	"<label style='margin-left:65px;'>Hospital&nbsp;&nbsp;</label>"												
 							+	"<input type='text' id='"+hospital_id+"' name='doc_hospital[]' class='form-control' style='display:inline-block;width:250px;' readonly required>"	
 							+	"<label style='margin-left:65px;'>Room&nbsp;&nbsp;</label>"	
@@ -287,10 +290,10 @@ $(document).ready(function(){
 							+	"<br><br>"
 							+	"<div style='margin-left:40px;'>"
 							+	"<p style='margin-left:3px;font-weight:bold;font-style:italic;font-size:11px;'>Please fill up the schedule below (check the checkbox beside the day to set it to closed)</p>"	
-							+	"<label><b>Monday</b></label>&nbsp;<input id='' type='checkbox'>"
-							+	"<label style='margin-left:135px;'><b>Tuesday</b>&nbsp;</label><input id='' type='checkbox'>"
-							+	"<label style='margin-left:135px;'><b>Wednesday</b></label>&nbsp;<input id='' type='checkbox'>"
-							+	"<label style='margin-left:110px;'><b>Thursday</b></label>&nbsp;<input id='' type='checkbox'>"
+							+	"<label><b>Monday</b></label>&nbsp;<input class='closedcheck' id=monday'"+hospital_content_num+"' type='checkbox'>"
+							+	"<label style='margin-left:135px;'><b>Tuesday</b>&nbsp;</label><input class='closedcheck' id=tuesday'"+hospital_content_num+"' type='checkbox'>"
+							+	"<label style='margin-left:135px;'><b>Wednesday</b></label>&nbsp;<input class='closedcheck' id=wednesday'"+hospital_content_num+"' type='checkbox'>"
+							+	"<label style='margin-left:110px;'><b>Thursday</b></label>&nbsp;<input class='closedcheck' id=thursday'"+hospital_content_num+"' type='checkbox'>"
 							+	"<br>"
 							+	"<input type='text' id='monday_start"+hospital_content_num+"' name='monday_start[]' class='time_picker' style='display:inline-block;width:85px;text-align:center;font-size:13px;'> to&nbsp;"
 							+	"<input type='text' id='monday_end"+hospital_content_num+"' name='monday_end[]' class='time_picker' style='display:inline-block;width:85px;text-align:center;font-size:13px;'>"
@@ -315,9 +318,9 @@ $(document).ready(function(){
 							+	"<input type='text' id='thursday_break_start"+hospital_content_num+"' name='thursday_break_start[]' class='time_picker' style='display:inline-block;width:85px;text-align:center;font-size:13px;margin-left:20px;'> to&nbsp;" 
 							+	"<input type='text' id='thursday_break_end"+hospital_content_num+"' name='thursday_break_end[]' class='time_picker' style='display:inline-block;width:85px;text-align:center;font-size:13px;'>"
 							+	"<br><br>"
-							+	"<label><b>Friday</b></label>&nbsp;<input id='' type='checkbox'>"
-							+	"<label style='margin-left:150px;'><b>Saturday</b></label>&nbsp;<input id='' type='checkbox'>"
-							+	"<label style='margin-left:130px;'><b>Sunday</b></label>&nbsp;<input id='' type='checkbox'>"
+							+	"<label><b>Friday</b></label>&nbsp;<input class='closedcheck' id=friday'"+hospital_content_num+"' type='checkbox'>"
+							+	"<label style='margin-left:150px;'><b>Saturday</b></label>&nbsp;<input class='closedcheck' id=saturday'"+hospital_content_num+"' type='checkbox'>"
+							+	"<label style='margin-left:130px;'><b>Sunday</b></label>&nbsp;<input class='closedcheck' id=sunday'"+hospital_content_num+"' type='checkbox'>"
 							+	"<br>"
 							+	"<input type='text' id='friday_start"+hospital_content_num+"' name='friday_start[]' class='time_picker' style='display:inline-block;width:85px;text-align:center;font-size:13px;'> to&nbsp;" 
 							+	"<input type='text' id='friday_end"+hospital_content_num+"' name='friday_end[]' class='time_picker' style='display:inline-block;width:85px;text-align:center;font-size:13px;'>"
@@ -332,8 +335,8 @@ $(document).ready(function(){
 							+	"<br>"
 							+	"<input type='text' id='friday_break_start"+hospital_content_num+"' name='friday_break_start[ class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;'> to&nbsp;"
 							+	"<input type='text' id='friday_break_end"+hospital_content_num+"' name='friday_break_end[]' class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;'>"
-							+	"<input type='text' id='saturday_break_start"+hospital_content_num+"' name='satruday_break_start[ class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;margin-left:20px;'> to&nbsp;" 
-							+	"<input type='text' id='saturday_break_end"+hospital_content_num+"' name='satruday_break_end[]' class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;'>"
+							+	"<input type='text' id='saturday_break_start"+hospital_content_num+"' name='saturday_break_start[] class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;margin-left:20px;'> to&nbsp;" 
+							+	"<input type='text' id='saturday_break_end"+hospital_content_num+"' name='saturday_break_end[]' class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;'>"
 							+	"<input type='text' id='sunday_break_start"+hospital_content_num+"' name='sunday_break_start[ class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;margin-left:20px;'> to&nbsp;" 
 							+	"<input type='text' id='sunday_break_end"+hospital_content_num+"' name='sunday_break_end[]' class='time_picker' 3 style='display:inline-block;width:85px;text-align:center;font-size:13px;'>"
 							+	"<a href='javascript:;' class='hospital_update' id='"+hospital_update+"' style='display:inline;margin-left:50px;'>Update</a>"	
@@ -349,6 +352,11 @@ $(document).ready(function(){
 		document.getElementById(hospital_id).value = hospital;
 		document.getElementById(room_id).value = room;
 		document.getElementById(contact_num_id).value = contact_num;
+		document.getElementById(hospital_id_id).value = hospital_value;
+
+		document.getElementById('doc_hospital').value = "";
+		document.getElementById('doc_room').value = "";
+		document.getElementById('doc_contact_num').value = "";
 
 
 		hospital_content_num++;
@@ -387,6 +395,28 @@ $(document).ready(function(){
 	
 	});
 
+	$('#hospital').on('click', '.closedcheck', function(){
+		var temp = this.id;
+	    var id = temp.replace ( /[^\d.]/g, '' );
+	    var day = temp.replace(/[^a-zA-Z]+/g, '');
+
+	    var day_start = day+"_start"+id;
+	    var day_end = day+"_end"+id;
+	    var day_start_break = day+"_break_start"+id;
+	    var day_end_break = day+"_break_end"+id;
+
+	    if($(this).is(':checked')){
+	    	document.getElementById(day_start).value = "closed";
+	    	document.getElementById(day_start).setAttribute('disabled', true);
+	    	document.getElementById(day_end).value = "closed";
+	    	document.getElementById(day_end).setAttribute('disabled', true);
+	    	document.getElementById(day_start_break).value = "closed";
+	    	document.getElementById(day_start_break).setAttribute('disabled', true);
+	    	document.getElementById(day_end_break).value = "closed";
+	    	document.getElementById(day_end_break).setAttribute('disabled', true);
+	    }
+
+	});
 
 
 	//yearpicker start
